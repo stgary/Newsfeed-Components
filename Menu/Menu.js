@@ -9,6 +9,39 @@ let menuItems = [
   'Log Out'
 ];
 
+
+function sideMenu(array) {
+
+  const menu = document.createElement('div');
+  const ul = document.createElement('ul');
+  
+
+  array.forEach(element => {
+    const li = document.createElement('li');
+    li.textContent = element;
+    ul.appendChild(li);
+  })
+
+  // console.log(array);
+  menu.appendChild(ul);
+  menu.classList.add('menu');
+
+  return menu;
+}
+
+const header = document.querySelector('.header');
+
+header.appendChild(sideMenu(menuItems));
+
+const menu = document.querySelector('.menu');
+
+const menuButton = document.querySelector('.menu-button');
+menuButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  menu.classList.toggle('menu--open');
+})
+
+console.log(sideMenu(menuItems));
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
@@ -20,6 +53,7 @@ let menuItems = [
   </div>
 
   The function takes an array as its only argument.
+
 
   Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
   Add those items to the <ul>
